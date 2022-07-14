@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
-import api from '../../services/api';
+import { api } from '../../services/api';
 import { Container } from './styles';
 
 interface IFood {
@@ -20,7 +20,7 @@ interface FoodProps {
   handleDelete: (id:number) => void
 }
 
-export default function Food({food, handleEditFood, handleDelete}: FoodProps) {
+export function Food({food, handleEditFood, handleDelete}: FoodProps) {
   const { available } = food;
   const [isAvailable, setIsAvailable] = useState(available)
 
@@ -52,6 +52,7 @@ export default function Food({food, handleEditFood, handleDelete}: FoodProps) {
       <section className="footer">
         <div className="icon-container">
           <button
+            title='Editar'
             type="button"
             className="icon"
             onClick={setEditingFood}
@@ -61,6 +62,7 @@ export default function Food({food, handleEditFood, handleDelete}: FoodProps) {
           </button>
 
           <button
+            title='Remover'
             type="button"
             className="icon"
             onClick={() => handleDelete(food.id)}
@@ -75,6 +77,7 @@ export default function Food({food, handleEditFood, handleDelete}: FoodProps) {
 
           <label htmlFor={`available-switch-${food.id}`} className="switch">
             <input
+              aria-label='Alterar disponibilidade'
               id={`available-switch-${food.id}`}
               type="checkbox"
               checked={isAvailable}
