@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Food } from '../../components/Food';
 import { Header } from '../../components/Header';
-import ModalAddFood from '../../components/ModalAddFood';
-import ModalEditFood from '../../components/ModalEditFood';
+import { ModalAddFood } from '../../components/ModalAddFood';
+import { ModalEditFood } from '../../components/ModalEditFood';
 import { api } from '../../services/api';
 import { FoodsContainer } from './styles';
 
@@ -22,7 +22,7 @@ interface AddFood {
   description:string;
 }
 
-export default function Dashboard() {
+export function Dashboard() {
   const [foods, setFoods] = useState<IFood[]>([]);
   const [editingFood, setEditingFood] = useState<IFood>({} as IFood);
   const [modalOpen, setModalOpen] = useState(false);
